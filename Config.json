@@ -1,0 +1,12 @@
+{
+  "server_conf": {
+    "post": "5000"
+  },
+  "mysql_conf": {
+    "ip": "",
+    "post": 3306,
+    "db_name": "",
+    "user_name": "t",
+    "passwd": ""
+  }
+}
