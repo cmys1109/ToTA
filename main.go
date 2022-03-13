@@ -61,7 +61,7 @@ func main() {
 
 	App := iris.New()
 
-	App.RegisterView(iris.HTML("./view", ".html"))
+	App.RegisterView(iris.HTML("./views", ".html"))
 
 	App.Get("/", func(ctx iris.Context) {
 
@@ -90,18 +90,14 @@ func main() {
 			}
 			return
 		}
+		//将换行符替换成<br>实现换行
+		Text = strings.ReplaceAll(Text, "\n", "<br>")
 		SqlStr := "INSERT INTO ToTA(name,text,time,ip) VALUE (?,?,?,?)"
 		_, err := DB.Exec(SqlStr, Name, Text, Time, IP)
 		if err != nil {
 			panic(err)
 			return
 		}
-
-		//_, err = ctx.HTML()
-		//if err != nil {
-		//	panic(err)
-		//	return
-		//}
 
 		_, err = ctx.HTML(HTMLMap["Push.html"])
 		if err != nil {
@@ -149,7 +145,7 @@ func main() {
 		}
 
 		// wuwuwu,难搞，模板不能直接插入文本，html的解析会出问题
-		var body = "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>写给 {{.name}} 的留言</title>\n</head>\n<body>\n<h1>写给" + key + "的留言:</h1>\n<hr>"
+		var body = "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>写给 " + key + " 的留言</title>\n</head>\n<body>\n<h1>写给  " + key + "  的留言:</h1>\n<hr>"
 		for _, k := range TextList {
 			body += "<hr>\n<table>\n    <tr>\n        <td>" + k.Time + "</td>\n    </tr>\n    <tr>\n        <td>" + k.Text + "</td>\n    </tr>\n</table>"
 		}
