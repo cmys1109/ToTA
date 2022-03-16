@@ -78,7 +78,7 @@ func main() {
 		var (
 			Name = ctx.FormValue("name")
 			Text = ctx.FormValue("text")
-			Time = []uint8(time.Now().Format("2006-01-02 03:04:05"))
+			Time = []uint8(time.Now().Format("2006-01-02 15:04:05"))
 			IP   = ctx.Request().RemoteAddr
 		)
 

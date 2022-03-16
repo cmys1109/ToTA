@@ -17,6 +17,21 @@
 前端 我根本都不了解，所以就就随便用HTML写了一下，十分简陋
 仅仅满足最基本的使用需求  
 
+## MySQL DDL:
+```MySQL DDL
+create table ToTA
+(
+    id   int auto_increment
+        primary key,
+    name char(20) not null,
+    text text     not null,
+    time datetime not null,
+    ip   char(20) null,
+    constraint ToTA_id_uindex
+        unique (id)
+);
+```
+
 
 ```
 最后祝:Can say anything to sb,那个TA
